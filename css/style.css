@@ -1,0 +1,368 @@
+/*
+ * AstraForm Waitlist Landing Page Styles
+ * CSS Variables, Global Reset, and Glassmorphism implementation
+ */
+
+/* ========================================================
+   1. COLOR TOKENS (Based on astraform-waitlist-page-brief.md)
+   ======================================================== */
+:root {
+    /* Global Backgrounds */
+    --color-bg-dark: #0E1116; /* Base page background - deep, near-black ink */
+    --color-bg-alt: #151922;  /* Alternating section background, elevated surfaces */
+    --color-card-bg: rgba(255, 255, 255, 0.05); /* Subtle, translucent background for glassy elements */
+    --color-border: rgba(255, 255, 255, 0.1); /* Light border for glassy separation */
+
+    /* Paper Tone (Used for physical document mockups only) */
+    --color-paper: #F3EEE3;
+
+    /* Text Colors */
+    --color-ink: #E9E7E1;      /* Primary text on dark */
+    --color-ink-dim: #90959F;  /* Secondary text */
+
+    /* Accents */
+    --color-gold: #CBA457;     /* Primary accent — muted brass/stamp-ink gold. CTAs, highlights. */
+    --color-teal: #74B8AF;     /* Secondary accent — AI/guidance moments, success states. */
+
+    /* Glass Effect Backdrop */
+    --glass-opacity: 0.3;
+}
+
+/* ========================================================
+   2. BASE STYLES & RESET
+   ======================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--color-ink);
+    background-color: var(--color-bg-dark);
+    line-height: 1.6;
+    /* Setting up the global layer for mouse reaction */
+    overflow-x: hidden;
+}
+
+/* Global container for content constraint (Fixes general alignment/padding issues) */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+/* Glassmorphism base style for elements that should look frosted */
+.glass-container {
+    background-color: var(--color-card-bg);
+    backdrop-filter: blur(15px); /* The core glass effect */
+    -webkit-backdrop-filter: blur(15px); /* For WebKit browsers */
+    border: 1px solid var(--color-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================================
+   3. SECTION STYLES
+   ======================================================== */
+header {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Ensure it stays on top */
+    background-color: rgba(14, 17, 22, 0.95); /* Slightly opaque background to prevent background bleed */
+}
+
+.hero-section {
+    /* No specific background, let the global effect handle it */
+    padding: 8rem 0;
+}
+
+#contrast {
+    /* Use the alternating background color, but give it a glass container feel */
+    background-color: var(--color-bg-alt);
+    padding: 8rem 0;
+}
+
+#waitlist-cta {
+    padding: 8rem 0;
+}
+
+/* Typography Overrides */
+h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; margin-top: 3rem; margin-bottom: 2rem; }
+h3 { font-size: 1.9rem; margin-bottom: 0.5rem; }
+
+/* Buttons and CTAs */
+.btn-primary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s;
+    background-color: var(--color-gold);
+    color: var(--color-bg-dark);
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 15px rgba(203, 164, 87, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #b3984f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(203, 164, 87, 0.5);
+}
+
+/* Waitlist Form Styling (Common to Hero and CTA) */
+.waitlist-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem 0;
+}
+
+.waitlist-form input[type="email"] {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-card-bg);
+    color: var(--color-ink);
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.waitlist-form input[type="email"]:focus {
+    border-color: var(--color-teal);
+    outline: none;
+}
+
+/* Mockup Card (The centerpiece) */
+.form-mockup {
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    background-color: var(--color-paper); /* Override glass for the paper element */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.form-field {
+    margin-bottom: 1.5rem;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--color-ink-dim);
+}
+
+.form-field input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-paper);
+    color: #222; /* Dark text on paper */
+    border-radius: 4px;
+}
+
+/* AI Flagged Field Styling */
+.flagged-field {
+    position: relative;
+}
+.tooltip-trigger {
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 0.5rem;
+    color: var(--color-teal);
+    font-size: 1.2em;
+}
+
+/* Tooltip Popover */
+.tooltip-popover {
+    display: none;
+    position: absolute;
+    z-index: 200;
+    top: 100%;
+    left: 0;
+    transform: translateY(10px);
+    padding: 1rem;
+    background-color: rgba(14, 17, 22, 0.95); /* Semi-transparent dark background */
+    border: 1px solid var(--color-teal);
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    max-width: 300px;
+    transition: opacity 0.2s;
+}
+
+/* Visibility classes controlled by JS */
+.tooltip-popover.active {
+    display: block;
+    opacity: 1;
+}
+
+/* General Layout & Grids */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Mockup on left, Form on right */
+    gap: 4rem;
+    align-items: center;
+}
+
+.form-caption {
+    margin-top: 2rem;
+}
+
+/* Comparison Grid (Contrast Section) */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.comparison-column {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+}
+.comparison-column h3 {
+    color: var(--color-gold);
+}
+
+/* Timeline Grid (How It Works) */
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.step-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+.step-number {
+    display: inline-block;
+    background-color: var(--color-gold);
+    color: var(--color-bg-dark);
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+/* Use Cases Grid */
+.grid-2x6 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.case-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    transition: box-shadow 0.3s;
+}
+.case-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Vision and Footer */
+.vision-text {
+    max-width: 800px;
+    margin-top: 2rem;
+}
+.disclaimer {
+    font-size: 0.9rem;
+    color: var(--color-ink-dim);
+    margin-top: 1rem;
+}
+
+/* ========================================================
+   4. RESPONSIVENESS (Mobile-First)
+   ======================================================== */
+
+@media (max-width: 1024px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+
+    /* Grid adjustments */
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    .hero-copy {
+        order: 1;
+    }
+    .form-wrapper {
+        order: 2;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Comparison Grid */
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    /* Timeline Grid */
+    .timeline-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Formstack adjustments for mobile */
+    .waitlist-form {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* ========================================================
+   5. INTERACTIVITY STYLES (Glassmorphism & Pointer)
+   ======================================================== */
+
+/* Initial state for the global pointer effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* Crucial: Allows clicking elements beneath */
+    background: radial-gradient(circle at 50% 50%, rgba(100, 150, 255, 0.1) 0%, rgba(14, 17, 22, 0) 50%);
+    transition: background 0.05s linear; /* Smooth update for mouse movements */
+    opacity: 0.7; /* Subtle visibility */
+}
+
+/* Ensure main content sections sit above the pseudo-element layer */
+main > section {
+    position: relative;
+    z-index: 2; /* Overlap the background effect layer */
+}

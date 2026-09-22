@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstraForm — Document Intelligence</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="page-body">
+
+    <!-- 1. Navigation (Wrapped in a glassy container for consistency) -->
+    <header class="header glass-container">
+        <div class="container flex-space">
+            <div class="logo">AstraForm</div>
+            <a href="#waitlist-cta" class="btn-primary">Join the Waitlist</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. Hero Section (The main focus area) -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <h1 class="glass-container">Every form field, explained before you fill it in.</h1>
+                    <p class="subhead">AstraForm reads your government, banking, tax, and scholarship forms and tells you exactly what belongs in each field, in plain language, before you get it wrong.</p>
+
+                    <!-- The Mockup Card (Must remain outside glass effect for paper look) -->
+                    <div class="form-mockup-container">
+                        <div class="form-mockup">
+                            <div class="form-header">
+                                <h3 class="glass-container">Example: Tax Filing (Form W-2)</h3>
+                                <p class="form-subtitle">Tax Year 2023</p>
+                            </div>
+                            <!-- Mock Field 1: Standard -->
+                            <div class="form-field">
+                                <label for="field1">Employee Name</label>
+                                <input type="text" id="field1" placeholder="John Doe" readonly>
+                            </div>
+                            <!-- Mock Field 2: Flagged AI Field -->
+                            <div class="form-field flagged-field" data-tooltip-target="#field2-explanation">
+                                <label for="field2">State of Residence</label>
+                                <input type="text" id="field2" placeholder="CA">
+                                <!-- Tooltip/Explanation Placeholder -->
+                                <div class="tooltip-trigger" data-tooltip-target-id="field2-explanation">?</div>
+                            </div>
+                            <!-- Mock Field 3: Standard -->
+                            <div class="form-field">
+                                <label for="field3">Employer ZIP Code</label>
+                                <input type="text" id="field3" placeholder="90210" readonly>
+                            </div>
+                        </div>
+                        <!-- Tooltip Popover (Positioned relative to mockup) -->
+                        <div id="field2-explanation" class="tooltip-popover">
+                            <p><strong>AI Explanation:</strong> This field requires the two-digit abbreviation (e.g., CA, NY) and the full state name, as it verifies residency for tax purposes.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-caption">
+                        <p>Micro-copy: No spam. One email when we're ready for you.</p>
+                    </div>
+                </div >
+
+                <!-- Email Capture Form (Wrapped in glass) -->
+                <div class="form-wrapper glass-container">
+                    <form class="waitlist-form" action="https://formspree.io/f/your-id" method="POST">
+                        <input type="email" name="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn-primary">Join the Waitlist</button>
+                    </form>
+                    <!-- Confirmation message placeholder -->
+                    <div class="success-message" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Contrast Section -->
+        <section id="contrast" class="alt-bg">
+            <div class="container">
+                <h2 class="glass-container">OCR reads the text. It doesn't read the form.</h2>
+                <div class="comparison-grid">
+                    <div class="comparison-column glass-container">
+                        <h3 class="glass-container">A Typical OCR Tool</h3>
+                        <ul class="glass-container">
+                            <li class="glass-container">Raw text extraction only.</li>
+                            <li class="glass-container">No understanding of form context.</li>
+                            <li class="glass-container">Cannot map fields to concepts.</li>
+                            <li class="glass-container">Requires manual validation for structure.</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-column glass-container primary-column">
+                        <h3 class="glass-container">AstraForm Intelligence</h3>
+                        <ul class="glass-container">
+                            <li class="glass-container">📚 Identifies the exact form type and purpose.</li>
+                            <li class="glass-container">🔗 Maps every single field to its required meaning.</li>
+                            <li class="glass-container">✅ Explains fields in plain language, contextually.</li>
+                            <li class="glass-container">⚠️ Flags likely mistakes and missing required attachments.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div >
+        </section>
+
+        <!-- 4. How It Works -->
+        <section id="how-it-works">
+            <div class="container">
+                <h2 class="glass-container">The intelligence workflow: Simple steps to clarity.</h2>
+                <div class="timeline-grid">
+                    <div class="step-card glass-container">
+                        <div class="step-number">1</div>
+                        <h3 class="glass-container">Upload</h3>
+                        <p>Add a PDF, scanned image, or Word document—any format the user already has.</p>
+                    </div>
+                    <div class="step-card glass-container">
+                        <div class="step-number">2</div>
+                        <h3 class="glass-container">Understand</h3>
+                        <p>AstraForm identifies the form, maps every field, and pulls the underlying instructions behind it.</p>
+                    </div>
+                    <div class="step-card glass-container">
+                        <div class="step-number">3</div>
+                        <h3 class="glass-container">Complete</h3>
+                        <p>Get plain-language explanations, catch mistakes before submitting, and know exactly what supporting documents are needed.</p>
+                    </div>
+                </div >
+            </div >
+        </section>
+
+        <!-- 5. Use Cases Grid -->
+        <section id="use-cases" class="alt-bg">
+            <div class="container">
+                <h2 class="glass-container">Used by everyone, built for every need.</h2>
+                <div class="grid-2x6">
+                    <div class="case-card glass-container">
+                        <h4>Government Forms</h4>
+                        <p>Navigating complex federal/state applications with multiple data points.</p>
+                    </div>
+                    <div class="case-card glass-container">
+                        <h4>Banking & Loans</h4>
+                        <p>Understanding terms and fields in complex financial disclosure agreements.</p>
+                    </div>
+                    <div class="case-card glass-container">
+                        <h4>Insurance Claims</h4>
+                        <p>Organizing scattered information from adjuster notes and policy documents.</p>
+                    </div>
+                    <div class="case-card glass-container">
+                        <h4>Tax Filings</h4>
+                        <p>Ensuring every necessary deduction and cross-reference is accurately recorded.</p>
+                    </div>
+                    <div class="case-card glass-container">
+                        <h4>Scholarship Applications</h4>
+                        <p>Addressing highly specific requirements across multiple program guidelines.</p>
+                    </div>
+                    <div class="case-card glass-container">
+                        <h4>Legal Paperwork</h4>
+                        <p>Decoding dense legal jargon into clear, actionable steps for non-experts.</p>
+                    </div>
+                </div >
+            </div >
+        </section>
+
+        <!-- 6. Vision -->
+        <section id="vision">
+            <div class="container">
+                <h2 class="glass-container">This is just the start, not the ceiling.</h2>
+                <div class="vision-text glass-container">
+                    <p>AstraForm's vision extends beyond the waitlist. We are building an intelligence layer for all structured human communication. Our goal is to make the act of filling out paperwork as seamless as filling out a digital form.</p>
+                    <p>In the future, users will be able to autofill secure profiles, interact with multilingual documents, and guide themselves through government portals via a browser extension. The intelligence goes everywhere the paper does.</p>
+                    <p>We are building a single intelligence layer that sits atop the chaos of human document formats, saving time, reducing error, and giving the user confidence at every step.</p>
+                </div >
+            </div >
+        </section>
+
+        <!-- 7. Final CTA -->
+        <section id="waitlist-cta" class="alt-bg">
+            <div class="container text-center">
+                <h2 class="glass-container">Be first in when AstraForm opens up</h2>
+                <p class="subhead glass-container">Secure your spot in the intelligent future of document processing.</p>
+                <div class="form-wrapper glass-container">
+                    <form class="waitlist-form" action="https://formspree.io/f/your-id" method="POST">
+                        <input type="email" name="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn-primary">Join the Waitlist</button>
+                    </form>
+                    <!-- Confirmation message placeholder -->
+                    <div class="success-message" style="display: none;"></div>
+                </div >
+                <p class="form-caption glass-container">Micro-copy: No spam. One email when we're ready for you.</p>
+            </div >
+        </section>
+
+        <!-- 8. Footer -->
+        <footer class="glass-container">
+            <div class="container footer-content">
+                <div class="logo">AstraForm</div>
+                <p class="disclaimer">We're not a law firm, an accountant, or a government agency. We just make their paperwork less confusing.</p>
+            </div >
+        </footer>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

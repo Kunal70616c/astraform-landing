@@ -1,2 +1,6 @@
-# astraform-landing
-Official landing page and coming-soon waitlist for AstraForm—the guided form completion platform.
+# AstraForm landing
+    npm install
+    npm run dev        # local
+    npm run build      # outputs dist/
+Cloudflare Pages: connect repo, build command `npm run build`, output directory `dist`.
+Or CLI: `npx wrangler pages deploy dist --project-name astraform`
